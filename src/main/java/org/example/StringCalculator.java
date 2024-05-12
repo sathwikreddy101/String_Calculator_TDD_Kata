@@ -12,7 +12,7 @@ public class StringCalculator {
     }
 
     private static int sum(String input){
-        List<Integer> numbers = Arrays.stream(input.split(","))
+        List<Integer> numbers = Arrays.stream(input.split(",|\n"))
                 .map(Integer::parseInt)
                 .toList();
         return numbers.stream()
