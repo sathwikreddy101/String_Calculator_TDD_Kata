@@ -69,4 +69,9 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.add("//;\n1;2")).isEqualTo(3);
     }
 
+    @Test
+    public void should_throw_exception_for_negative_numbers() {
+        assertThatThrownBy(() -> StringCalculator.add("4,5,-1")).hasMessageContaining("negative numbers not allowed -1");
+    }
+
 }
