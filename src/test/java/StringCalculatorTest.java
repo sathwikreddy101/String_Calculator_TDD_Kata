@@ -57,4 +57,11 @@ public class StringCalculatorTest {
         assertThat(thrown).isInstanceOf(NumberFormatException.class);
     }
 
+    @Test
+    public void should_throw_exception_with_invalid_input_both_delimiters() {
+        String input = "1,\n2";
+        Throwable thrown = catchThrowable(() -> StringCalculator.add(input));
+        assertThat(thrown).isInstanceOf(NumberFormatException.class);
+    }
+
 }
