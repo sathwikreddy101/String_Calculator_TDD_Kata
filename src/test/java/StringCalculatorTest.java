@@ -1,5 +1,5 @@
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
+
 
 import org.example.StringCalculator;
 import org.junit.Test;
@@ -47,6 +47,14 @@ public class StringCalculatorTest {
     public void should_return_sum_with_newline_and_commas() {
         // add method should consider both commas and newlines as delimiter to split the input string
         assertThat(StringCalculator.add("1\n2,3")).isEqualTo(6);
+    }
+
+    @Test
+    public void should_throw_exception_with_invalid_input_as_new_line() {
+        // it is not valid if we have a new line which is not followed by integer
+        String input = "1,\n";
+        Throwable thrown = catchThrowable(() -> StringCalculator.add(input));
+        assertThat(thrown).isInstanceOf(NumberFormatException.class);
     }
 
 }
