@@ -12,4 +12,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.add("")).isEqualTo(0);
     }
 
+    @Test
+    public void should_return_number_for_one_number() {
+        // a single character string with valid integer should return same integer as output
+        assertThat(StringCalculator.add("1")).isEqualTo(1);
+    }
+
 }
