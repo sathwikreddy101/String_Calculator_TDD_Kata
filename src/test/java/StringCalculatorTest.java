@@ -43,4 +43,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.add("4,5,1")).isEqualTo(10);
     }
 
+    @Test
+    public void should_return_sum_with_newline_and_commas() {
+        // add method should consider both commas and newlines as delimiter to split the input string
+        assertThat(StringCalculator.add("1\n2,3")).isEqualTo(6);
+    }
+
 }
