@@ -37,4 +37,10 @@ public class StringCalculatorTest {
         assertThatThrownBy(() -> StringCalculator.add("1,$")).isInstanceOf(NumberFormatException.class);
     }
 
+    @Test
+    public void should_return_sum_of_any_amount_of_numbers() {
+        // add method should accept and return sum of any number of integers in string
+        assertThat(StringCalculator.add("4,5,1")).isEqualTo(10);
+    }
+
 }
