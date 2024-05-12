@@ -70,6 +70,11 @@ public class StringCalculatorTest {
     }
 
     @Test
+    public void should_throw_exception_when_split_by_invalid_custom_delimiter() {
+        assertThatThrownBy(() -> StringCalculator.add("//;]\\n1;]2;]3")).hasMessageContaining("Wrong Custom Delimiter");
+    }
+
+    @Test
     public void should_throw_exception_for_negative_numbers() {
         assertThatThrownBy(() -> StringCalculator.add("4,5,-1")).hasMessageContaining("negative numbers not allowed -1");
     }
