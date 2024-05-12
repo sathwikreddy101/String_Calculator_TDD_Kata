@@ -25,4 +25,10 @@ public class StringCalculatorTest {
         assertThatThrownBy(() -> StringCalculator.add("$")).isInstanceOf(NumberFormatException.class);
     }
 
+    @Test
+    public void should_return_sum_of_two_numbers(){
+        // string with two valid integers as input should get sum of them as output
+        assertThat(StringCalculator.add("1,5")).isEqualTo(6);
+    }
+
 }
