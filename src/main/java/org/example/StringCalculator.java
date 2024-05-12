@@ -15,6 +15,13 @@ public class StringCalculator {
 
     private static int sum(String input){
         List<Integer> numbers = getIntegerListFromString(split(input));
+        StringBuilder negativeNumbers = new StringBuilder();
+        numbers.stream()
+                .filter(num -> num < 0)
+                .forEach(num -> negativeNumbers.append(num).append(" "));
+        if(!negativeNumbers.toString().isEmpty()){
+            throw new RuntimeException("negative numbers not allowed " + negativeNumbers);
+        }
         return numbers.stream()
                 .reduce(Integer::sum)
                 .orElseThrow();
