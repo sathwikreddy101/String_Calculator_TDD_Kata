@@ -64,4 +64,9 @@ public class StringCalculatorTest {
         assertThat(thrown).isInstanceOf(NumberFormatException.class);
     }
 
+    @Test
+    public void should_return_sum_of_numbers_split_by_custom_delimiter() {
+        assertThat(StringCalculator.add("//;\n1;2")).isEqualTo(3);
+    }
+
 }
