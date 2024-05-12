@@ -2,6 +2,8 @@ package org.example;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
     public static int add(String input){
@@ -26,6 +28,15 @@ public class StringCalculator {
     }
 
     private static String[] split(String input) {
+        if(input.startsWith("//")){
+            Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(input);
+            if(matcher.matches()){
+                String delimiter = matcher.group(1);
+                String toSplit = matcher.group(2);
+                return toSplit.split(delimiter);
+            }
+            throw new RuntimeException("Wrong Custom Delimiter");
+        }
         return input.split("(?<!,)\\s*(,|\\n)");
     }
 }
