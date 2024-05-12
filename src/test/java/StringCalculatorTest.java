@@ -20,7 +20,7 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void should_return_exception_for_invalid_one_number() {
+    public void should_throw_exception_for_invalid_one_number() {
         // a single character string with invalid character i.e other than numbers should return exception
         assertThatThrownBy(() -> StringCalculator.add("$")).isInstanceOf(NumberFormatException.class);
     }
@@ -29,6 +29,12 @@ public class StringCalculatorTest {
     public void should_return_sum_of_two_numbers(){
         // string with two valid integers as input should get sum of them as output
         assertThat(StringCalculator.add("1,5")).isEqualTo(6);
+    }
+
+    @Test
+    public void should_throw_exception_for_invalid_number_in_two_numbers() {
+        // string has any of the invalid characters among two
+        assertThatThrownBy(() -> StringCalculator.add("1,$")).isInstanceOf(NumberFormatException.class);
     }
 
 }
